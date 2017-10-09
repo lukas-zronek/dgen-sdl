@@ -9,6 +9,8 @@ AC_INIT(
 	[http://sourceforge.net/projects/dgen],
 )
 
+AC_CONFIG_MACRO_DIR([m4])
+
 dnl We'll need machine type later.
 AC_CANONICAL_SYSTEM
 
@@ -167,37 +169,10 @@ AC_ARG_ENABLE(
 )
 AS_IF(
 	[test "x$USE_OPENGL" != xno],
-	[AC_CHECK_HEADER(
-		[SDL_opengl.h],
-		[AC_SEARCH_LIBS(
-			[glEnd],
-			[GL opengl32 gl],
-			[USE_OPENGL=yes],
-			[AS_IF(
-				[test "x$cross_compiling" = xyes],
-				dnl When nothing works, use brute force.
-				[USE_OPENGL=no]
-				[AC_CHECK_LIB(
-					[GL],
-					[main],
-					[LIBS="-lGL $LIBS"]
-					[USE_OPENGL=yes]
-				)]
-				[AC_CHECK_LIB(
-					[opengl32],
-					[main],
-					[LIBS="-lopengl32 $LIBS"]
-					[USE_OPENGL=yes]
-				)]
-				[AC_CHECK_LIB(
-					[gl],
-					[main],
-					[LIBS="-lgl $LIBS"]
-					[USE_OPENGL=yes]
-				)],
-				[USE_OPENGL=no]
-			)]
-		)],
+	[AX_CHECK_GL(
+		[CFLAGS="$GL_CFLAGS $CFLAGS"]
+		[LIBS="$GL_LIBS $LIBS"]
+		[USE_OPENGL=yes],
 		[USE_OPENGL=no]
 	)]
 )
