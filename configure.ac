@@ -217,17 +217,23 @@ AC_ARG_WITH(
 )
 AS_IF(
 	[test "x$USE_LIBARCHIVE" != xno],
-	[AC_CHECK_HEADER(
-		[archive.h],
-		[AC_CHECK_LIB(
-			[archive],
-			[archive_read_support_format_raw],
-			[LIBS="-larchive $LIBS"]
-			[TOBIN_LIBS="-larchive $TOBIN_LIBS"]
-			[USE_LIBARCHIVE=yes],
+	[PKG_CHECK_MODULES([libarchive], [libarchive >= 2.8],
+                [CFLAGS="$CFLAGS $libarchive_CFLAGS"]
+                [LIBS="$LIBS $libarchive_LIBS"]
+                [TOBIN_LIBS="$TOBIN_LIBS $libarchive_LIBS"]
+                [USE_LIBARCHIVE=yes],
+		[AC_CHECK_HEADER(
+			[archive.h],
+			[AC_CHECK_LIB(
+				[archive],
+				[archive_read_support_format_raw],
+				[LIBS="-larchive $LIBS"]
+				[TOBIN_LIBS="-larchive $TOBIN_LIBS"]
+				[USE_LIBARCHIVE=yes],
+				[USE_LIBARCHIVE=no]
+			)],
 			[USE_LIBARCHIVE=no]
-		)],
-		[USE_LIBARCHIVE=no]
+		)]
 	)]
 )
 
