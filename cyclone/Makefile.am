@@ -1,6 +1,8 @@
 # DGen/SDL v1.31+
 # Automakefile for Cyclone 68000
 
+AUTOMAKE_OPTIONS = subdir-objects
+
 CC = @CC_FOR_BUILD@
 CXX = @CXX_FOR_BUILD@
 @CPPFLAGS_B@ = @CPPFLAGS_FOR_BUILD@ -I$(DIR)/Disa

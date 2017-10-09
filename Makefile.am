@@ -1,5 +1,7 @@
 # DGen/SDL v1.26+
 
+AUTOMAKE_OPTIONS = subdir-objects
+
 include $(top_srcdir)/Makefile.asm.am
 
 DIST_SUBDIRS = musa mz80 sdl star cyclone doc
