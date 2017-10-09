@@ -6455,7 +6455,9 @@ next_event:
 		ksym = event.key.keysym.sym;
 		ksym_uni = event.key.keysym.unicode;
 		if ((ksym_uni < 0x20) ||
-		    ((ksym >= SDLK_KP0) && (ksym <= SDLK_KP_EQUALS)))
+		    ((ksym >= SDLK_KP0) && (ksym <= SDLK_KP_EQUALS)) ||
+		    ((ksym >= SDLK_UP) && (ksym <= SDLK_F15)) ||
+		    ((ksym == SDLK_BACKSPACE) || (ksym == SDLK_DELETE)))
 			ksym_uni = 0;
 		kpress[(ksym & 0xff)] = ksym_uni;
 		if (ksym_uni)
@@ -6569,7 +6571,9 @@ next_event:
 		ksym = event.key.keysym.sym;
 		ksym_uni = kpress[(ksym & 0xff)];
 		if ((ksym_uni < 0x20) ||
-		    ((ksym >= SDLK_KP0) && (ksym <= SDLK_KP_EQUALS)))
+		    ((ksym >= SDLK_KP0) && (ksym <= SDLK_KP_EQUALS)) ||
+		    ((ksym >= SDLK_UP) && (ksym <= SDLK_F15)) ||
+		    ((ksym == SDLK_BACKSPACE) || (ksym == SDLK_DELETE)))
 			ksym_uni = 0;
 		kpress[(ksym & 0xff)] = 0;
 		if (ksym_uni)
