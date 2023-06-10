@@ -16,7 +16,7 @@ This is a bugfixed version of [dgen-sdl](http://dgen.sourceforge.net/) (Genesis/
 
  * Using MacPorts:
 ```
-sudo port install libsdl -x11 libarchive pkgconfig
+sudo port install libsdl +compat libarchive pkgconfig
 ```
 
 **Generate Makefiles**
