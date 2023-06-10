@@ -33,10 +33,15 @@ sudo port install libsdl +compat libarchive pkgconfig
 
 ## License
 
+See [AUTHORS](AUTHORS) and [COPYING](COPYING).
+
 All files in this archive fall under 3 clause BSD license with the exceptions of
-* musa: non-commercial license
-* starscream: non-commercial license
-* mz80: non-commercial license
-* cz80: non-commercial license
-* scale2x: GPLv2
-* hqx: LGPL
+* [musa](musa/readme.txt)
+* [starscream](star/stardoc.txt)
+* [mz80](mz80/mz80.txt)
+* [cz80](cz80/readme.txt)
+* [scale2x](scale2x/COPYING)
+* [hqx](hqx/COPYING)
+* [cyclone](cyclone/Cyclone.txt)
+* [drz80](drz80/DrZ80.txt)
+* [dz80](dz80/README.TXT)
